@@ -2,14 +2,14 @@
 
 set -e
 
-# Set project directory
-PROJECT_DIR=${PROJECT_PATH:-/opt/reverse-proxy}  # fallback if PROJECT_PATH is not set
+# Set project directory (fallback to /opt/reverse-proxy if not provided)
+PROJECT_DIR="${PROJECT_PATH:-/opt/reverse-proxy}"
 
 echo "🔧 Creating project directory at $PROJECT_DIR..."
 sudo mkdir -p "$PROJECT_DIR"
 
-echo "📂 Copying files..."
-sudo cp -r . "$PROJECT_DIR"
+echo "📂 Copying project files into $PROJECT_DIR..."
+sudo cp -r ./* "$PROJECT_DIR/"
 
 echo "📁 Creating subdirectories if missing..."
 sudo mkdir -p "$PROJECT_DIR"/{certs,vhost.d,html}
